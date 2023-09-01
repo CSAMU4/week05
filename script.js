@@ -9,7 +9,7 @@
         Menu App - Creating a Playlist that you add, view and delete songs. 
  */
 
-class Song { 
+class Song { // the name of song + artist of the song 
     constructor(name, artist) {
         this.name = name; 
         this.artist = artist; 
@@ -19,17 +19,50 @@ describe() {
     }
 }
 
-class Playlist {
-    constructor(song) {
-        this.song = song; 
+class Playlist { // the name of the playlist 
+    constructor(name) {
+        this.name = name; 
         this.songs = []; 
     }
 
-    addSong(song) {
-        if (song instanceof Song) {
-            this.songs.push(song);
-        } else {
-            throw new Error(`You can only add an instance of Song. The Argument is not a song: ${song}`); 
+addSong(song) { // adding a song to the playlist 
+    if (song instanceof Song) {
+         this.songs.push(song);
+     } else {
+         throw new Error(`You can only add an instance of Song. The Argument: ${song} is not a song.`); 
         }
+    }
+describe () { // the name of the playlist and how many songs are in in
+    return `${this.name} has ${this.songs.length} songs`;
+    }
+}
+
+class Menu { 
+    constructor() {
+        this.playlists = []; // we can have any amount of playlists 
+        this.selectedPlaylist = null; // starting with no playlist
+    }
+
+    start() { 
+        let selection = this.showMainMenuOptions(); 
+        while(selection != 0) {
+            switch(selection) {
+                case '1': 
+                    this.createPlaylist(); // creates a new playlist
+                    break; 
+                case '2': 
+                    this.viewPlaylist(); // views a playlist
+                    break; 
+                case '3':
+                    this.deletePlaylist(); // deletes a playlist
+                    break; 
+                case '4': 
+                    this.displayPlaylists(); // displays all the playlists 
+                default: 
+                    selection = 0; 
+            
+            }
+        }
+
     }
 }
