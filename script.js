@@ -14,4 +14,7 @@ class Playlist {
         this.song = song; 
         this.artist = artist; 
     }
+describe() { // method 
+    return `${this.song} is by ${this.artist}.`; 
+    }
 }
