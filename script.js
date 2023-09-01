@@ -84,4 +84,8 @@ class Menu {
         }
         alert(playlistString);  
     }
+    createPlaylist() {
+        let name = prompt('Enter name for the new playlist:')
+        this.playlists.push(new Playlist(name)); 
+    }
 }
