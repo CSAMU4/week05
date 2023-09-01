@@ -9,12 +9,27 @@
         Menu App - Creating a Playlist that you add, view and delete songs. 
  */
 
-class Playlist {
-    constructor(song, artist) {
-        this.song = song; 
+class Song { 
+    constructor(name, artist) {
+        this.name = name; 
         this.artist = artist; 
     }
-describe() { // method 
-    return `${this.song} is by ${this.artist}.`; 
+describe() { 
+    return `This ${this.name} is by ${this.artist}.`; 
+    }
+}
+
+class Playlist {
+    constructor(song) {
+        this.song = song; 
+        this.songs = []; 
+    }
+
+    addSong(song) {
+        if (song instanceof Song) {
+            this.songs.push(song);
+        } else {
+            throw new Error(`You can only add an instance of Song. The Argument is not a song: ${song}`); 
+        }
     }
 }
