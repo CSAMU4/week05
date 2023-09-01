@@ -77,4 +77,11 @@ class Menu {
         `);
     }
 
+    displayPlaylists() {
+        let playlistString = ''; // name of the blank playlist 
+        for (let i = 0; i < this.playlists.length; i++) { // loop through the playlists 
+            playlistString += i + ') ' + this.playlists[i].name + '\n'; // grab each playlist and get the name of that playlist 
+        }
+        alert(playlistString);  
+    }
 }
