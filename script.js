@@ -12,7 +12,6 @@ class Cat {
         this.name = name; 
         this.breed = breed; 
     }
-    
     describe() {
         return `${this.name} is ${this.breed}.`;
     }
