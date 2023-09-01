@@ -15,7 +15,7 @@ class Song { // the name of song + artist of the song
         this.artist = artist; 
     }
 describe() { 
-    return `This ${this.name} is by ${this.artist}.`; 
+    return `${this.name} is by ${this.artist}.`; 
     }
 }
 
@@ -32,7 +32,7 @@ addSong(song) { // adding a song to the playlist
          throw new Error(`You can only add an instance of Song. The Argument: ${song} is not a song.`); 
         }
     }
-describe () { // the name of the playlist and how many songs are in in
+describe () { // the name of the playlist and how many songs are in the playlist
     return `${this.name} has ${this.songs.length} songs`;
     }
 }
@@ -64,7 +64,7 @@ class Menu {
             selection = this.showMainMenuOptions(); 
         }
 
-        alert('Goodbye!')
+        alert('Goodbye! No Playlist to create, view, delete, or display!')
     }
 
     showMainMenuOptions() {
@@ -87,5 +87,25 @@ class Menu {
     createPlaylist() {
         let name = prompt('Enter name for the new playlist:')
         this.playlists.push(new Playlist(name)); 
+    }
+    viewPlaylist() {
+        let index = prompt('Enter the index of the playlist you wish to view:')
+        if (index > -1 && index < this.playlists.length) {
+            this.selectedPlaylist = this.playlists[index]; 
+            let description = 'Playlist Name: ' + this.selectedPlaylist.name + '\n'; 
+            
+            for (let i = 0; i < this.selectedPlaylist.songs.length; i++) {
+                description += i + ') ' + this.selectedPlaylist.songs[i].name + ' - ' 
+                + this.selectedPlaylist.songs[i].artist + '\n';
+            }
+            let selection = this.showPlaylistMenuOptions(description); 
+            switch(selection) {
+                case '1': 
+                    this.createPlaylist();
+                    break;
+                case '2':
+                    this.deletePlaylist(); 
+            }
+        }
     }
 }
