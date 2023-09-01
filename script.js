@@ -5,14 +5,13 @@
         Use at least one array.
         Use at least two classes.
         Your menu should have the options to create, view, and delete elements.
+
+        Menu App - Creating a Playlist that you add, view and delete songs. 
  */
 
-class Cat {
-    constructor (name, breed) {
-        this.name = name; 
-        this.breed = breed; 
-    }
-    describe() {
-        return `${this.name} is ${this.breed}.`;
+class Playlist {
+    constructor(song, artist) {
+        this.song = song; 
+        this.artist = artist; 
     }
 }
