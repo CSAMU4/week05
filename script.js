@@ -39,7 +39,7 @@ describe () { // the name of the playlist and how many songs are in in
 
 class Menu { 
     constructor() {
-        this.playlists = []; // we can have any amount of playlists 
+        this.playlists = []; // we can have any amount of playlists
         this.selectedPlaylist = null; // starting with no playlist
     }
 
@@ -60,9 +60,21 @@ class Menu {
                     this.displayPlaylists(); // displays all the playlists 
                 default: 
                     selection = 0; 
-            
             }
+            selection = this.showMainMenuOptions(); 
         }
 
+        alert('Goodbye!')
     }
+
+    showMainMenuOptions() {
+        return prompt (`
+        0) Exit Playlist 
+        1) Create a New Playlist 
+        2) View a Playlist 
+        3) Delete a Playlist 
+        4) Display All Playlists 
+        `);
+    }
+
 }
