@@ -39,8 +39,8 @@ describe () { // the name of the playlist and how many songs are in the playlist
 
 class Menu { 
     constructor() {
-        this.playlists = []; // we can have any amount of playlists
-        this.selectedPlaylist = null; // starting with no playlist
+        this.playlists = []; 
+        this.selectedPlaylist = null; // manage one playist at a time 
     }
 
     start() { 
@@ -64,7 +64,7 @@ class Menu {
             selection = this.showMainMenuOptions(); 
         }
 
-        alert('Goodbye! No Playlist to create, view, delete, or display!')
+        alert('Goodbye!')
     }
 
     showMainMenuOptions() {
@@ -76,36 +76,52 @@ class Menu {
         4) Display All Playlists 
         `);
     }
+    showPlaylistMenuOptions(playlistInfo) {
+        return prompt (`
+        0) Go back
+        1) Add a song 
+        2) Delete a song 
+        ----------------------
+        ${playlistInfo}
+
+        `);
+    }
 
     displayPlaylists() {
         let playlistString = ''; // name of the blank playlist 
-        for (let i = 0; i < this.playlists.length; i++) { // loop through the playlists 
+             for (let i = 0; i < this.playlists.length; i++) { // loop through the playlists 
             playlistString += i + ') ' + this.playlists[i].name + '\n'; // grab each playlist and get the name of that playlist 
         }
         alert(playlistString);  
     }
+
     createPlaylist() {
-        let name = prompt('Enter name for the new playlist:')
+        let name = prompt('Enter name for the new playlist: ');
         this.playlists.push(new Playlist(name)); 
     }
+
     viewPlaylist() {
-        let index = prompt('Enter the index of the playlist you wish to view:')
+        let index = prompt('Enter the index of the playlist you wish to view:');
         if (index > -1 && index < this.playlists.length) {
             this.selectedPlaylist = this.playlists[index]; 
             let description = 'Playlist Name: ' + this.selectedPlaylist.name + '\n'; 
-            
+
             for (let i = 0; i < this.selectedPlaylist.songs.length; i++) {
                 description += i + ') ' + this.selectedPlaylist.songs[i].name + ' - ' 
-                + this.selectedPlaylist.songs[i].artist + '\n';
+                + this.selectedPlaylist.songs[i].artist + '\n'; 
             }
             let selection = this.showPlaylistMenuOptions(description); 
             switch(selection) {
                 case '1': 
-                    this.createPlaylist();
-                    break;
-                case '2':
-                    this.deletePlaylist(); 
+                    this.createSong(); 
+                    break; 
+                case '2': 
+                    this.deleteSong(); 
             }
-        }
+        }         
     }
 }
+    
+        
+let menu = new Menu();
+menu.start(); 
