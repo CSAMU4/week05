@@ -126,9 +126,15 @@ class Menu {
         this.selectedPlaylist.songs.push(new Song(name, artist));
     }
     deleteSong() {
-        let index = prompt('Entter the index of the song you wish to delete:')
+        let index = prompt('Enter the index of the song you wish to delete:')
         if (index > -1 && index < this.selectedPlaylist.songs.length) {
             this.selectedPlaylist.songs.splice(index,1); 
+        }
+    }
+    deletePlaylist () {
+        let index = prompt('Enter the playlist you wish to delete:')
+        if (index > -1 && index < this.playlists.length) {
+            this.playlists.splice(index,1); 
         }
     }
 }
