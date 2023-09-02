@@ -120,8 +120,18 @@ class Menu {
             }
         }         
     }
+    createSong () {
+        let name = prompt('Enter the name of the song:'); 
+        let artist = prompt('Enter the artist of the song:'); 
+        this.selectedPlaylist.songs.push(new Song(name, artist));
+    }
+    deleteSong() {
+        let index = prompt('Entter the index of the song you wish to delete:')
+        if (index > -1 && index < this.selectedPlaylist.songs.length) {
+            this.selectedPlaylist.songs.splice(index,1); 
+        }
+    }
 }
-    
-        
+          
 let menu = new Menu();
 menu.start(); 
